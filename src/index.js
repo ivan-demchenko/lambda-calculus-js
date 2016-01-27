@@ -9,16 +9,6 @@ const churchNumToNum = n => n(inc)(0)
 
 const ID = x => x
 
-// Tests: Boolean
-
-logt('Boolean tests');
-logf('IF T 4 2', b.if(b.t)(4)(2))
-logf('IF F 4 2', b.if(b.f)(4)(2))
-logf('AND 4 2', b.and(4)(2))
-logf('OR 4 2', b.or(4)(2))
-logf('NOT F 4 2', b.not(b.f)(4)(2))
-logf('NOT T 4 2', b.not(b.t)(4)(2))
-
 // ---------------------------
 // Data structures
 
