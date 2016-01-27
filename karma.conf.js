@@ -1,7 +1,5 @@
-// Karma configuration
-// Generated on Wed Jan 27 2016 07:56:22 GMT+0100 (CET)
-
 module.exports = function(config) {
+
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -15,20 +13,37 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'dist/bundle.js',
-      'tests/*.js'
+      'src/index.js',
+      'tests/*.spec.js'
     ],
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      "src/index.js": ["webpack"],
+      "tests/*.js": ["webpack"]
     },
+
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-phantomjs-launcher'),
+      require('karma-webpack')
+    ],
+
+    webpack: {
+      module: {
+        loaders: [
+          { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
+        ]
+      }
+    },
+
+    webpackMiddleware: { noInfo: true },
 
 
     // test results reporter to use
@@ -61,7 +76,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous

@@ -1,3 +1,4 @@
+import b from './boolean'
 const sum = a => b => a + b;
 const inc = a => a + 1;
 const logt = (m) => console.log('--- ' + m.toUpperCase() + ' ' + '-')
@@ -8,34 +9,24 @@ const churchNumToNum = n => n(inc)(0)
 
 const ID = x => x
 
-// Boolean:
-
-const T     = t => f => t
-const F     = t => f => f
-
-const IF    = P => x => y => P(x)(y)
-const OR    = x => y => IF(T)(x)(y)
-const AND   = x => y => IF(F)(x)(y)
-const NOT   = x => x(F)(T)
-
 // Tests: Boolean
 
 logt('Boolean tests');
-logf('IF T 4 2', IF(T)(4)(2))
-logf('IF F 4 2', IF(F)(4)(2))
-logf('AND 4 2', AND(4)(2))
-logf('OR 4 2', OR(4)(2))
-logf('NOT F 4 2', NOT(F)(4)(2))
-logf('NOT T 4 2', NOT(T)(4)(2))
+logf('IF T 4 2', b.if(b.t)(4)(2))
+logf('IF F 4 2', b.if(b.f)(4)(2))
+logf('AND 4 2', b.and(4)(2))
+logf('OR 4 2', b.or(4)(2))
+logf('NOT F 4 2', b.not(b.f)(4)(2))
+logf('NOT T 4 2', b.not(b.t)(4)(2))
 
 // ---------------------------
 // Data structures
 
 const PAIR = x => y => f => f(x)(y)
-const NIL = x => T
-const FST = p => p(T)
-const SND = p => p(F)
-const NULL = p => p( x => y => F )
+const NIL = x => b.t
+const FST = p => p(b.t)
+const SND = p => p(b.f)
+const NULL = p => p( x => y => b.f )
 const CONS = h => t => f => PAIR(h)(t)(f)
 
 // Tests: Data structures
@@ -59,7 +50,7 @@ const PLUS  = m => n => f => x => m(f)(n(f)(x))
 const MULT  = m => n => f => m(n(f))
 const SUB   = m => n => f => n(PRED)(m)
 
-const IsZero = n => n(F)(NOT)(F)
+const IsZero = n => n(b.f)(b.not)(b.f)
 const LEQ = x => y => IsZero(x(PRED)(y))
 
 const _0    = f => x => x
@@ -86,7 +77,7 @@ logf( 'PLUS _6 _2', churchNumToNum( PLUS(_6)(_2) ) );
 logf( 'PLUS _0 _0', churchNumToNum( PLUS(_0)(_0) ) );
 logf( 'IsZero _0', IsZero(_0)('yes')('no') );
 logf( 'IsZero _2', IsZero(_2)('yes')('no') );
-logf( 'IF.IsZero _0', IF(IsZero(_0))('yes')('no') );
+logf( 'IF.IsZero _0', b.if(IsZero(_0))('yes')('no') );
 logf( 'LEQ 4 4', LEQ(_4)(_4)('Y')('N') );
 logf( 'LEQ 3 5', LEQ(_3)(_5)('Y')('N') );
 logf( 'LEQ 5 2', LEQ(_5)(_2)('Y')('N') );
