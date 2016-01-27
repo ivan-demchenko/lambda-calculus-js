@@ -1,3 +1,4 @@
+import b from './boolean'
 import d from './data-structures'
 
 const SUCC  = n => f => x => f(n(f)(x))
@@ -6,10 +7,10 @@ const PRED = n => d.snd(n(np)(d.pair(_0)(_0)))
 
 const PLUS  = m => n => f => x => m(f)(n(f)(x))
 const MULT  = m => n => f => m(n(f))
-const SUB   = m => n => f => n(PRED)(m)
+const SUB   = m => n => n(PRED)(m)
 
-const IsZero = n => n(b.f)(b.not)(b.f)
-const LEQ = x => y => IsZero(x(PRED)(y))
+const ISZERO = n => n(b.f)(b.not)(b.f)
+const LEQ = x => y => ISZERO(SUB(x)(y))
 
 const _0 = f => x => x
 const _1 = SUCC(_0)
@@ -28,7 +29,7 @@ exports.pred = PRED
 exports.plus = PLUS
 exports.mult = MULT
 exports.sub = SUB
-exports.IsZero = IsZero
+exports.IsZero = ISZERO
 exports.leq = LEQ
 exports._0 = _0
 exports._1 = _1
