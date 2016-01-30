@@ -105,6 +105,10 @@ describe("church numbers", () => {
       expect(n.leq(n._4)(n._2)('Y')('N')).toBe('N');
     });
 
+    it("should give TRUE for 4 <= 4", () => {
+      expect(n.leq(n._4)(n._4)('Y')('N')).toBe('Y');
+    });
+
   });
 
 });
