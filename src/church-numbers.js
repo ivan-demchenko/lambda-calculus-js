@@ -1,5 +1,5 @@
 import b from './boolean'
-import d from './data-structures'
+import d from './pair'
 
 const SUCC  = n => f => x => f(n(f)(x))
 const np = p => d.pair(SUCC(d.fst(p)))(d.fst(p))

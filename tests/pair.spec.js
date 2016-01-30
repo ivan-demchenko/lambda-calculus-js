@@ -1,9 +1,9 @@
 import d from '../src/data-structures'
 import n from '../src/church-numbers'
 
-describe("data structures", () => {
+describe("pair", () => {
 
-  describe('pairs', () => {
+  describe('first and second', () => {
 
     it("should get the first element of a pair", () => {
       let p = d.pair(3)(5)
