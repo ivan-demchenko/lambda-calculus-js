@@ -1,15 +1,15 @@
-import b from './boolean'
-import d from './pair'
+import { F, T, NOT } from './boolean'
+import { PAIR, SND, FST } from './pair'
 
 const SUCC  = n => f => x => f(n(f)(x))
-const np = p => d.pair(SUCC(d.fst(p)))(d.fst(p))
-const PRED = n => d.snd(n(np)(d.pair(_0)(_0)))
+const np = p => PAIR(SUCC(FST(p)))(FST(p))
+const PRED = n => SND(n(np)(PAIR(_0)(_0)))
 
 const PLUS  = m => n => f => x => m(f)(n(f)(x))
 const MULT  = m => n => f => m(n(f))
 const SUB   = m => n => n(PRED)(m)
 
-const ISZERO = n => n(b.f)(b.not)(b.f)
+const ISZERO = n => n(F)(NOT)(F)
 const LEQ = x => y => ISZERO(SUB(x)(y))
 
 const _0 = f => x => x
@@ -24,13 +24,13 @@ const _8 = SUCC(_7)
 const _9 = SUCC(_8)
 const _10 = SUCC(_9)
 
-exports.succ = SUCC
-exports.pred = PRED
-exports.plus = PLUS
-exports.mult = MULT
-exports.sub = SUB
-exports.IsZero = ISZERO
-exports.leq = LEQ
+exports.SUCC = SUCC
+exports.PRED = PRED
+exports.PLUS = PLUS
+exports.MULT = MULT
+exports.SUB = SUB
+exports.ISZERO = ISZERO
+exports.LEQ = LEQ
 exports._0 = _0
 exports._1 = _1
 exports._2 = _2

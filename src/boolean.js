@@ -6,9 +6,9 @@ const OR    = x => y => IF(T)(x)(y)
 const AND   = x => y => IF(F)(x)(y)
 const NOT   = x => x(F)(T)
 
-exports.t = T;
-exports.f = F;
-exports.if = IF;
-exports.or = OR;
-exports.and = AND;
-exports.not = NOT;
+exports.T = T;
+exports.F = F;
+exports.IF = IF;
+exports.OR = OR;
+exports.AND = AND;
+exports.NOT = NOT;

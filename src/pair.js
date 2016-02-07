@@ -1,13 +1,13 @@
-import b from './boolean'
+import { T, F } from './boolean'
 
 const PAIR = x => y => f => f(x)(y)
-const NIL = x => b.t
-const FST = p => p(b.t)
-const SND = p => p(b.f)
-const ISNULL = p => p( x => y => b.f )
+const NIL = x => T
+const FST = p => p(T)
+const SND = p => p(F)
+const ISNULL = p => p( x => y => F )
 
-exports.pair = PAIR
-exports.nil = NIL
-exports.fst = FST
-exports.snd = SND
-exports.IsNull = ISNULL
+exports.PAIR = PAIR
+exports.NIL = NIL
+exports.FST = FST
+exports.SND = SND
+exports.ISNULL = ISNULL
