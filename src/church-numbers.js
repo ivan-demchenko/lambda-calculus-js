@@ -9,7 +9,7 @@ const PLUS  = m => n => f => x => m(f)(n(f)(x))
 const MULT  = m => n => f => m(n(f))
 const SUB   = m => n => n(PRED)(m)
 
-const ISZERO = n => n(F)(NOT)(F)
+const ISZERO = n => n(x => F)(T)
 const LEQ = x => y => ISZERO(SUB(x)(y))
 
 const _0 = f => x => x
