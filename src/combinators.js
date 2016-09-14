@@ -1,3 +1,8 @@
-const Y = f => (q => q(q))(x => f(y => x(x)(y)))
+/**
+ * This article helped me a lot
+ * http://matt.might.net/articles/js-church/
+ */
 
-exports.Y = Y
+export const Y =
+(f => F => F(x => f(f)(F)(x)))
+(f => F => F(x => f(f)(F)(x)))
